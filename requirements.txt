@@ -1,5 +1,5 @@
 streamlit>=1.35.0
-ultralytics==8.3.176
+git+https://github.com/sunsmarterjie/yolov12.git
 torch>=2.9.0
 torchvision>=0.24.0
 numpy>=1.24.0,<2.0.0
