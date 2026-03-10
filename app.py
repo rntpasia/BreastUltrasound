@@ -107,7 +107,7 @@ def badge(class_name: str) -> str:
 
 # ── Sidebar ──────────────────────────────────────────────────────────────────
 with st.sidebar:
-    st.markdown("### ⚙️ Configuration")
+    st.markdown("### Configuration")
     st.markdown("---")
     weights_file = st.file_uploader("Upload model weights (.pt)", type=["pt"],
         help="Upload your trained YOLOv12 best.pt weights file.")
@@ -134,18 +134,18 @@ if weights_file is not None:
         tmp_weights = f.name
     try:
         model = load_model(tmp_weights)
-        st.success("✅ Model loaded successfully.")
+        st.success("Model loaded successfully.")
     except Exception as e:
         st.error(f"Failed to load model: {e}")
 else:
-    st.info("👈 Upload your **best.pt** weights in the sidebar to get started.")
+    st.info(" Upload your **best.pt** weights in the sidebar to get started.")
 
 st.markdown("---")
 
 col_upload, col_gap, col_result = st.columns([1, 0.08, 1])
 
 with col_upload:
-    st.markdown("#### 📂 Upload Ultrasound Image")
+    st.markdown("####  Upload Ultrasound Image")
     uploaded_img = st.file_uploader("Drop a JPG / PNG ultrasound image",
         type=["jpg", "jpeg", "png"], label_visibility="collapsed")
 
@@ -160,10 +160,10 @@ with col_upload:
             st.markdown(f'<div class="metric-box"><div class="metric-label">Height</div><div class="metric-value">{h}px</div></div>', unsafe_allow_html=True)
 
 with col_result:
-    st.markdown("#### 🔬 Detection Result")
+    st.markdown("#### Detection Result")
 
     if uploaded_img and model:
-        if st.button("▶  Run Analysis", use_container_width=True):
+        if st.button("  Run Analysis", use_container_width=True):
             with st.spinner("Running inference…"):
                 annotated_pil, detections = run_inference(model, pil_img, conf_threshold)
 
